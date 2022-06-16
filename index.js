@@ -8,6 +8,12 @@ let screenWidth = Dimensions.get("window").width;
 // Retrieve initial screen's height
 let screenHeight = Dimensions.get("window").height;
 
+const updateDimensions = () => {
+  screenWidth = screenWidth + screenHeight;
+  screenHeight = screenWidth - screenHeight;
+  screenWidth = screenWidth - screenHeight;
+};
+
 if (isTablet()) {
   if (screenWidth < screenHeight) {
     updateDimensions();
@@ -17,12 +23,6 @@ if (isTablet()) {
     updateDimensions();
   }
 }
-
-const updateDimensions = () => {
-  screenWidth = screenWidth + screenHeight;
-  screenHeight = screenWidth - screenHeight;
-  screenWidth = screenWidth - screenHeight;
-};
 
 /**
  * Converts provided width percentage to independent pixel (dp).
