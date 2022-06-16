@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/marudy/react-native-responsive-screen#readme",
   "peerDependencies": {
-    "react-native": ">=0.35"
+    "react-native": ">=0.35",
+    "react-native-device-info": "5.2.1"
   }
 }
