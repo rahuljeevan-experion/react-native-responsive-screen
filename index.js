@@ -1,5 +1,6 @@
 // packages
 import { Dimensions, PixelRatio } from "react-native";
+import { isTablet } from "react-native-device-info";
 
 // Retrieve initial screen's width
 let screenWidth = Dimensions.get("window").width;
@@ -7,11 +8,21 @@ let screenWidth = Dimensions.get("window").width;
 // Retrieve initial screen's height
 let screenHeight = Dimensions.get("window").height;
 
-if (screenWidth < screenHeight) {
+if (isTablet()) {
+  if (screenWidth < screenHeight) {
+    updateDimensions();
+  }
+} else {
+  if (screenWidth > screenHeight) {
+    updateDimensions();
+  }
+}
+
+const updateDimensions = () => {
   screenWidth = screenWidth + screenHeight;
   screenHeight = screenWidth - screenHeight;
   screenWidth = screenWidth - screenHeight;
-}
+};
 
 /**
  * Converts provided width percentage to independent pixel (dp).
